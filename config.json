@@ -1,0 +1,88 @@
+{
+	"name" : "beege",
+
+	"include" : [{
+		"path" : "${QOOXDOO_PATH}/tool/data/config/application.json"
+	}],
+
+	"export" : ["api", "api-data", "build", "clean", "distclean",
+			"dependencies", "fix", "info", "inspector", "lint", "migration",
+			"pretty", "profiling", "source", "source-all", "source-hybrid",
+			"source-server", "source-server-reload", "source-httpd-config",
+			"simulation-build", "simulation-run", "test", "test-source",
+			"translation", "validate-config", "validate-manifest", "watch"],
+
+	"default-job" : "source-hybrid",
+
+	"let" : {
+		"APPLICATION" : "beege",
+		"QOOXDOO_PATH" : "/home/hugb/app/qooxdoo-3.5-sdk",
+		"QXTHEME" : "beege.theme.Indigo",
+		//"QXTHEME" : "qx.theme.Modern",
+		"API_EXCLUDE" : ["qx.test.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*", "${APPLICATION}.simulation.*"],
+		"LOCALES" : ["en", "zh"],
+		"CACHE" : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
+		"ROOT" : "."
+	},
+
+	// You only need to edit the remainder of this file, if you want to
+	// customize
+	// specific jobs, or add own job definitions.
+
+	"jobs" : {
+		"common" : {
+			"environment" : {
+				"adminconsole.wsuri" : "ws://127.0.0.1:8080/ws"
+			}//,
+			//"compile" : {
+			//	"type" : "(source|build|hybrid)",
+			//	"add-script" : [{
+			//		"uri" : "<script-uri>"
+			//	}]
+			//},
+		},
+		"includes" : {
+			"include" : [
+				"beege.theme.Theme",
+				"beege.theme.Indigo",
+				"qx.theme.Classic",
+				"qx.theme.Simple"
+			]
+		},
+		"asset-let" : {
+			"qx.icontheme" : ["Tango", "Oxygen"],
+			"mySizes" : ["16", "32"]
+		},
+		"libraries" : {
+			"library" : [{
+				"manifest" : "${QOOXDOO_PATH}/component/library/logpane/Manifest.json"
+			},
+			{
+				"manifest" : "${QOOXDOO_PATH}/component/library/versionlabel/Manifest.json"
+			},
+			{
+				"manifest" : "${QOOXDOO_PATH}/framework/Manifest.json"
+			},
+			{
+				"manifest" : "Manifest.json"
+			}]
+		},
+		// Uncomment the following entry to add a contrib or library to your
+		// project; make sure to adapt the path to the Manifest.json; if you are
+		// using a contrib: library, it will be downloaded into the path
+		// specified
+		// by the 'cache/downloads' config key
+		/*
+		 * "libraries" : { "library" : [ { "manifest" :
+		 * "contrib://SkeletonApplication/trunk/Manifest.json" } ] }
+		 */
+
+		// If you want to tweak a job setting, see the following sample where
+		// the "format" feature of the "build-script" job is overridden.
+		// To see a list of available jobs, invoke 'generate.py x'.
+		/*
+		 * , "build-script" : { "compile-options" : { "code" : { "format" :
+		 * false } } }
+		 */
+	}
+}
