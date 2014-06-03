@@ -29,6 +29,10 @@ qx.Class.define("beege.views.Toolbar", {
 		__createBar : function() {
 			this.__runButton = new qx.ui.toolbar.Button(this.tr("Run"), "icon/22/actions/media-playback-start.png");
 			this.add(this.__runButton);
+			
+			this.__runButton.addListener("execute", function(){
+				beege.models.WebSocket.getInstance().send({cmd : "menu", data : ""});
+			}, this);
 
 			var menuPart = new qx.ui.toolbar.Part();
 			this.add(menuPart);

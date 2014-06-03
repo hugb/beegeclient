@@ -24,7 +24,7 @@ qx.Class.define("beege.views.Login", {
 			useMoveFrame : false,
 			useResizeFrame : false,
 			resizable : [false, false, false, false],
-			modal : true,
+			modal : false,
 			icon : "beege/images/user_16.png"
 		});
 		
