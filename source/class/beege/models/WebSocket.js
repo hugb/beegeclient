@@ -66,6 +66,7 @@ qx.Class.define("beege.models.WebSocket", {
 				}
 				// 成功登录消息
 				if (msg.cmd == "login" && msg.code == 0) {
+					var message;
 					while(message = __this.__messages.shift()){
 						__this.send(message);
 					}
@@ -75,15 +76,26 @@ qx.Class.define("beege.models.WebSocket", {
 			// WebSocket被关闭，再次连接
 			this.__websocket.onclose = function(evt) {
 				__this.debug("websocket connect is closed.");
+				__this.debug(evt.data);
 				__this.__status = false;
 				__this.fireDataEvent("onclose", evt);
+				this.__websocket.onopen = null;
+				this.__websocket.onerror = null;
+				this.__websocket.onclose = null;
+				this.__websocket.onmessage = null;
+				this.__websocket = null;
 			};
 			// 通信发生错误，再次连接
 			this.__websocket.onerror = function(evt) {
 				__this.debug("websocket connect is error.");
-				__this.debug(evt);
+				__this.debug(evt.data);
 				__this.__status = false;
 				__this.fireDataEvent("onerror", evt);
+				this.__websocket.onopen = null;
+				this.__websocket.onerror = null;
+				this.__websocket.onclose = null;
+				this.__websocket.onmessage = null;
+				this.__websocket = null;
 			};
 		},
 

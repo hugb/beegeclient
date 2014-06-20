@@ -13,7 +13,7 @@ qx.Theme.define("beege.theme.Theme", {
 		color : beege.theme.Color,
 		decoration : beege.theme.Decoration,
 		font : beege.theme.Font,
-		icon : qx.theme.icon.Tango,
+		icon : beege.theme.Icon,
 		appearance : beege.theme.Appearance
 	}
 });

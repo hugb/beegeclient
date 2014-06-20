@@ -37,6 +37,13 @@ qx.Theme.define("beege.theme.Appearance", {
 					padding : 5
 				};
 			}
+		},
+		"tree-package" : {
+			style : function(states) {
+				return {
+					icon : "beege/images/package18.gif"
+				};
+			}
 		}
 	}
 });

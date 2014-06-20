@@ -40,10 +40,17 @@ qx.Class.define("beege.Application", {
 				qx.log.appender.Native;
 				qx.log.appender.Console;
 			}
-
+			
+			this.mainView = new beege.views.Main();
+			
+			// 设置主题
+			var theme = qx.Theme.getByName(qx.bom.Cookie.get("theme_name"));
+			if (theme && qx.theme.manager && qx.theme.manager.Meta) {
+				qx.theme.manager.Meta.getInstance().setTheme(theme);
+			}
+			// 设置语言
 			qx.locale.Manager.getInstance().setLocale("zh");
 
-			this.mainView = new beege.views.Main();
 			this.getRoot().add(this.mainView, {edge : 0});
 
 			beege.models.WebSocket.getInstance().addListener("login", function(evt) {
@@ -53,6 +60,22 @@ qx.Class.define("beege.Application", {
 					login.open();
 				}
 			}, this);
+			
+
+	
+			//var ws = new beege.models.WebSocketIO("ws");
+			//Here you should customize port, hostname, ...
+			 
+			//Connect with previous setted properties
+			//ws.setUrl("ws://127.0.0.1:8080/");
+			//ws.connect();
+			 
+			//ws.emit("achannel", "hello");
+			//ws.on("achannel", function(result){
+			//	console.log(result);
+			//}, this);
+
+
 		},
 		
 		finalize : function() {

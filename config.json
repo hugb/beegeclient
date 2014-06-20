@@ -44,9 +44,9 @@
 		"includes" : {
 			"include" : [
 				"beege.theme.Theme",
-				"beege.theme.Indigo",
-				"qx.theme.Classic",
-				"qx.theme.Simple"
+				"beege.theme.Indigo"//,
+				//"qx.theme.Classic",
+				//"qx.theme.Simple"
 			]
 		},
 		"asset-let" : {
@@ -66,7 +66,7 @@
 			{
 				"manifest" : "Manifest.json"
 			}]
-		},
+		}//,
 		// Uncomment the following entry to add a contrib or library to your
 		// project; make sure to adapt the path to the Manifest.json; if you are
 		// using a contrib: library, it will be downloaded into the path
@@ -84,5 +84,17 @@
 		 * , "build-script" : { "compile-options" : { "code" : { "format" :
 		 * false } } }
 		 */
+		/*"build-script":{
+			"copy-files" :{
+				"files":[
+					"./script/socket/"
+				],
+				"source" : "./source/resource/",
+				"target"  : "./build/"
+			},
+			"add-script":[{
+				"uri":"resource/beege/script/socket/socket.io.js"
+			}]
+		}*/
 	}
 }

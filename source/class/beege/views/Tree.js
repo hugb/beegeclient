@@ -1,5 +1,5 @@
 /**
- * Left tree
+ * 左侧菜单
  * 
  * @asset(qx/icon/${qx.icontheme}/22/places/user-desktop.png)
  * 
@@ -17,7 +17,6 @@ qx.Class.define("beege.views.Tree", {
 			height : 400,
 			hideRoot : true
 		});
-		//this.setAppearance("demo-tree");
 
 		this.__type = type;
 
@@ -32,12 +31,12 @@ qx.Class.define("beege.views.Tree", {
 			root.setOpen(true);
 			this.setRoot(root);
 
+			// 右键菜单
 			var menu = new qx.ui.menu.Menu();
 			var newButton = new qx.ui.menu.Button(this.tr("New"));
 			newButton.addListener("execute", function() {
 				if (this.getSelection().length > 0) {
 					var treeNode = this.getSelection()[0];
-					console.log(treeNode);
 					var type = treeNode.getUserData();
 					switch (type) {
 					default:
@@ -64,7 +63,7 @@ qx.Class.define("beege.views.Tree", {
 
 			menu.add(new qx.ui.menu.Separator());
 
-			menu.add(new qx.ui.menu.RadioButton(this.tr("Delete")));
+			menu.add(new qx.ui.menu.RadioButton(this.tr("refesh")));
 
 			beege.models.WebSocket.getInstance().send({cmd : "tree"});
 			beege.models.WebSocket.getInstance().addListener("tree", function(evt) {
@@ -78,6 +77,7 @@ qx.Class.define("beege.views.Tree", {
 						child = new qx.ui.tree.TreeFolder(tmp.title);
 					}
 					child.setUserData("type", this.__type);
+					child.setAppearance("tree-package");
 					child.setContextMenu(menu);
 					root.add(child);
 				}

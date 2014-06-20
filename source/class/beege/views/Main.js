@@ -55,6 +55,7 @@ qx.Class.define("beege.views.Main", {
 				var theme = qx.Theme.getByName(currentTheme);
 				if (theme && qx.theme.manager && qx.theme.manager.Meta) {
 					qx.theme.manager.Meta.getInstance().setTheme(theme);
+					qx.bom.Cookie.set("theme_name", currentTheme);
 				}
 			}, this);
 			

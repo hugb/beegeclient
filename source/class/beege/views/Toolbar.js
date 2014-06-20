@@ -1,7 +1,7 @@
 /**
  * This ${mySizes}
  * 
- * @asset(qx/icon/Tango/22/actions/media-playback-start.png)
+ * @asset(qx/icon/${qx.icontheme}/22/actions/media-playback-start.png)
  * @asset(qx/icon/${qx.icontheme}/22/apps/utilities-color-chooser.png)
  * @asset(qx/icon/${qx.icontheme}/22/apps/utilities-log-viewer.png)
  * @asset(qx/icon/${qx.icontheme}/22/apps/internet-web-browser.png)
@@ -47,20 +47,19 @@ qx.Class.define("beege.views.Toolbar", {
 			t2.setUserData("value", "beege.theme.Indigo");
 			t2.setValue(true);
 			themeMenu.add(t2);
-			
-			var t3 = new qx.ui.menu.RadioButton(this.tr("Classic"));
-			t3.setUserData("value", "qx.theme.Classic");
-			themeMenu.add(t3);
-			
-			var t4 = new qx.ui.menu.RadioButton(this.tr("Manager"));
-			t4.setUserData("value", "qx.theme.Manager");
-			themeMenu.add(t4);
-			
-			var t5 = new qx.ui.menu.RadioButton(this.tr("Simple"));
-			t5.setUserData("value", "qx.theme.Simple");
-			themeMenu.add(t5);
 
-			this.__themeGroup = new qx.ui.form.RadioGroup(t1, t2, t3, t4, t5);
+			this.__themeGroup = new qx.ui.form.RadioGroup(t1, t2);
+			
+			switch (qx.bom.Cookie.get("theme_name")) {
+				case "beege.theme.Theme" :
+					this.__themeGroup.setSelection([t1]);
+					break;
+				case "beege.theme.Indigo" :
+					this.__themeGroup.setSelection([t2]);
+					break;
+				default :
+					break;
+			}
 
 			var themeButton = new qx.ui.toolbar.MenuButton(this.tr("Theme"), "icon/22/apps/utilities-color-chooser.png", themeMenu);
 			themeButton.setToolTipText(this.tr("Choose theme"));
