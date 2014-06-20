@@ -11,6 +11,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: beege/views/Toolbar.js:44 beege/views/Config.js:20
+msgid "Settings"
+msgstr ""
+
+#: beege/views/Config.js:51
+msgid "Lang"
+msgstr ""
+
+#: beege/views/Config.js:58
+msgid "English"
+msgstr ""
+
+#: beege/views/Config.js:69
+msgid "Simple chinese"
+msgstr ""
+
+#: beege/views/Config.js:81
+msgid "Theme"
+msgstr ""
+
+#: beege/views/Config.js:88
+msgid "Modern"
+msgstr ""
+
+#: beege/views/Config.js:99
+msgid "Indigo"
+msgstr ""
+
 #: beege/views/Footer.js:13
 msgid "Copyright"
 msgstr ""
@@ -75,7 +103,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: beege/views/Task.js:21 beege/views/Toolbar.js:66
+#: beege/views/Toolbar.js:58 beege/views/Task.js:21
 msgid "Task"
 msgstr ""
 
@@ -83,78 +111,61 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: beege/views/Toolbar.js:29
+#: beege/views/Toolbar.js:31
 msgid "Run"
 msgstr ""
 
-#: beege/views/Toolbar.js:37
-msgid "Modern"
+#: beege/views/Toolbar.js:41
+msgid "Reset Password"
 msgstr ""
 
-#: beege/views/Toolbar.js:42
-msgid "Indigo"
-msgstr ""
-
-#: beege/views/Toolbar.js:48
-msgid "Theme"
-msgstr ""
-
-#: beege/views/Toolbar.js:49
-msgid "Choose theme"
-msgstr ""
-
-#: beege/views/Toolbar.js:54
+#: beege/views/Toolbar.js:46
 msgid "User"
 msgstr ""
 
-#: beege/views/Toolbar.js:60
+#: beege/views/Toolbar.js:52
 msgid "Log"
 msgstr ""
 
-#: beege/views/Toolbar.js:61
+#: beege/views/Toolbar.js:53
 msgid "Display log file"
 msgstr ""
 
-#: beege/views/Toolbar.js:67
+#: beege/views/Toolbar.js:59
 msgid "Display my task"
+msgstr ""
+
+#: beege/views/Toolbar.js:69
+msgid "Check"
+msgstr ""
+
+#: beege/views/Toolbar.js:74
+msgid "About"
+msgstr ""
+
+#: beege/views/Toolbar.js:77
+msgid "Help"
 msgstr ""
 
 #: beege/views/Tree.js:36
 msgid "New"
 msgstr ""
 
-#: beege/views/Tree.js:44
+#: beege/views/Tree.js:43
 msgid "file"
 msgstr ""
 
-#: beege/views/Tree.js:53
+#: beege/views/Tree.js:52
 msgid "Edit"
 msgstr ""
 
-#: beege/views/Tree.js:55 beege/views/Tree.js:67
+#: beege/views/Tree.js:54
 msgid "Delete"
 msgstr ""
 
-#~ msgid "Add"
-#~ msgstr ""
+#: beege/views/Tree.js:66
+msgid "Refesh"
+msgstr ""
 
-#~ msgid "Auto Upload"
-#~ msgstr ""
-
-#~ msgid "Cancel"
-#~ msgstr ""
-
-#~ msgid "Default Theme(Modern)"
-#~ msgstr ""
-
-#~ msgid "Indigo Theme"
-#~ msgstr ""
-
-#~ msgid "Name"
-#~ msgstr ""
-
-#~ msgid "Please user email"
-#~ msgstr ""
-
-#~ msgid "Upload"
+#~ msgid "Choose theme"
 #~ msgstr ""

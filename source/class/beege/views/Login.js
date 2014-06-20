@@ -54,7 +54,7 @@ qx.Class.define("beege.views.Login", {
 			password.setRequiredInvalidMessage(this.tr("Please input your password"));
 			password.setToolTipText(this.tr("Length 6-12"));
 			password.setPlaceholder(this.tr("Please input your password"));
-			form.add(password, "<a style = 'text-decoration:underline'>"+this.tr("Password")+ "</a>");
+			form.add(password, this.tr("Password"));
 
 			var remember = new qx.ui.form.CheckBox();
 			remember.setToolTipText(this.tr("One week auto login"));

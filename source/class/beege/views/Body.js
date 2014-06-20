@@ -39,34 +39,6 @@ qx.Class.define("beege.views.Body", {
 				nativeContextMenu : true
 			});
 
-			var tabView = new qx.ui.tabview.TabView(/* "bottom" */);
-			tabView.setPadding(5, 5, 5, 5);
-			var page = new qx.ui.tabview.Page("Desktop");
-			page.setLayout(new qx.ui.layout.Grow());
-
-			this.__windowManager = new qx.ui.window.Manager();
-			this.__desktop = new qx.ui.window.Desktop(this.__windowManager);
-
-			/*
-			 * this.__upload = new beege.views.Upload();
-			 * this.__desktop.add(this.__upload, { left : "40%", top : "30%" });
-			 * this.__upload.open();
-			 */
-
-			var x = new qx.ui.window.Window("dd");
-			this.__desktop.add(x, {
-				left : "20%",
-				top : "30%"
-			});
-			x.open();
-			// this.__upload.minimize();
-
-			page.add(this.__desktop);
-
-			tabView.add(page);
-
-			this.__mainView = tabView;
-
 			return this.__mainView;
 		},
 

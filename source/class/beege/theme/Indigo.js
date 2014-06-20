@@ -14,6 +14,6 @@ qx.Theme.define("beege.theme.Indigo", {
 		decoration : qx.theme.indigo.Decoration,
 		font : qx.theme.indigo.Font,
 		icon : qx.theme.icon.Tango,
-		appearance : qx.theme.indigo.Appearance
+		appearance : beege.theme.IndigoAppearance
 	}
 });

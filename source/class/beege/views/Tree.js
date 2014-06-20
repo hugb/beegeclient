@@ -63,7 +63,7 @@ qx.Class.define("beege.views.Tree", {
 
 			menu.add(new qx.ui.menu.Separator());
 
-			menu.add(new qx.ui.menu.RadioButton(this.tr("refesh")));
+			menu.add(new qx.ui.menu.RadioButton(this.tr("Refesh")));
 
 			beege.models.WebSocket.getInstance().send({cmd : "tree"});
 			beege.models.WebSocket.getInstance().addListener("tree", function(evt) {

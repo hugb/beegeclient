@@ -27,6 +27,7 @@ qx.Class.define("beege.views.Main", {
 		header : null,
 		body : null,
 		footer : null,
+		toolbar : null,
 		
 		initEvent : function() {
 			var viewGroup = this.toolbar.getViewGroup();
@@ -48,17 +49,7 @@ qx.Class.define("beege.views.Main", {
 						stack.exclude();
 				}
 			}, this);
-			
-			var themeGroup = this.toolbar.getThemeGroup();
-			themeGroup.addListener("changeSelection", function(e) {
-				var currentTheme = e.getData()[0].getUserData("value");
-				var theme = qx.Theme.getByName(currentTheme);
-				if (theme && qx.theme.manager && qx.theme.manager.Meta) {
-					qx.theme.manager.Meta.getInstance().setTheme(theme);
-					qx.bom.Cookie.set("theme_name", currentTheme);
-				}
-			}, this);
-			
+						
 			var runButton = this.toolbar.getRunButton();
 			runButton.addListener("execute", function() {
 				//conosle.log(this.body.getDesktop());

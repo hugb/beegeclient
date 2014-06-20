@@ -21,18 +21,10 @@ qx.Class.define("beege.Application", {
 	
 	construct : function() {
 		this.base(arguments);
-		
-		//var uri = qx.util.ResourceManager.getInstance().toUri("beege/css/apiviewer.css");
-		//qx.bom.Stylesheet.includeFile(uri);
 	},
 
 	members : {
-		/**
-		 * This method contains the initial application code and gets called
-		 * during startup of the application
-		 * 
-		 * @lint ignoreDeprecated(alert)
-		 */
+
 		main : function() {
 			this.base(arguments);
 
@@ -42,6 +34,8 @@ qx.Class.define("beege.Application", {
 			}
 			
 			this.mainView = new beege.views.Main();
+			this.loginView = new beege.views.Login();
+			this.settingsView = new beege.views.Settings();
 			
 			// 设置主题
 			var theme = qx.Theme.getByName(qx.bom.Cookie.get("theme_name"));
@@ -49,33 +43,24 @@ qx.Class.define("beege.Application", {
 				qx.theme.manager.Meta.getInstance().setTheme(theme);
 			}
 			// 设置语言
-			qx.locale.Manager.getInstance().setLocale("zh");
-
+			var lang = qx.bom.Cookie.get("lang_name");
+			if (lang) {
+				qx.locale.Manager.getInstance().setLocale(lang);
+			}
+			
 			this.getRoot().add(this.mainView, {edge : 0});
+			
+			this.mainView.toolbar.getSettingsButton().addListener("execute", function() {
+				this.getRoot().add(this.settingsView, {left : "40%", top : "30%"});
+				this.settingsView.open();
+			}, this);
 
 			beege.models.WebSocket.getInstance().addListener("login", function(evt) {
 				if (evt.getData().code == 1) { 
-					var login = new beege.views.Login();
-					this.getRoot().add(login, {left : "40%", top : "30%"});
-					login.open();
+					this.getRoot().add(this.loginView, {left : "40%", top : "30%"});
+					this.loginView.open();
 				}
 			}, this);
-			
-
-	
-			//var ws = new beege.models.WebSocketIO("ws");
-			//Here you should customize port, hostname, ...
-			 
-			//Connect with previous setted properties
-			//ws.setUrl("ws://127.0.0.1:8080/");
-			//ws.connect();
-			 
-			//ws.emit("achannel", "hello");
-			//ws.on("achannel", function(result){
-			//	console.log(result);
-			//}, this);
-
-
 		},
 		
 		finalize : function() {
@@ -85,5 +70,7 @@ qx.Class.define("beege.Application", {
 	
 	destruct : function() {
 		this._disposeObjects("mainView");
+		//this._disposeObjects("loginView");
+		//this._disposeObjects("settingsView");
 	}
 });

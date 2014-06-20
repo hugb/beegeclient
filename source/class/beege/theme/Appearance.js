@@ -41,7 +41,8 @@ qx.Theme.define("beege.theme.Appearance", {
 		"tree-package" : {
 			style : function(states) {
 				return {
-					icon : "beege/images/package18.gif"
+					icon : "beege/images/package18.gif",
+					paddingTop: 5
 				};
 			}
 		}

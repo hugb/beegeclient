@@ -25,6 +25,7 @@ qx.Class.define("beege.views.Toolbar", {
 		__themeGroup : null,
 
 		__runButton : null,
+		__settingsBtn: null,
 
 		__createBar : function() {
 			this.__runButton = new qx.ui.toolbar.Button(this.tr("Run"), "icon/22/actions/media-playback-start.png");
@@ -34,41 +35,15 @@ qx.Class.define("beege.views.Toolbar", {
 				beege.models.WebSocket.getInstance().send({cmd : "menu", data : ""});
 			}, this);
 
-			var menuPart = new qx.ui.toolbar.Part();
-			this.add(menuPart);
-
-			var themeMenu = new qx.ui.menu.Menu();
-
-			var t1 = new qx.ui.menu.RadioButton(this.tr("Modern"));
-			t1.setUserData("value", "beege.theme.Theme");
-			themeMenu.add(t1);
-
-			var t2 = new qx.ui.menu.RadioButton(this.tr("Indigo"));
-			t2.setUserData("value", "beege.theme.Indigo");
-			t2.setValue(true);
-			themeMenu.add(t2);
-
-			this.__themeGroup = new qx.ui.form.RadioGroup(t1, t2);
-			
-			switch (qx.bom.Cookie.get("theme_name")) {
-				case "beege.theme.Theme" :
-					this.__themeGroup.setSelection([t1]);
-					break;
-				case "beege.theme.Indigo" :
-					this.__themeGroup.setSelection([t2]);
-					break;
-				default :
-					break;
-			}
-
-			var themeButton = new qx.ui.toolbar.MenuButton(this.tr("Theme"), "icon/22/apps/utilities-color-chooser.png", themeMenu);
-			themeButton.setToolTipText(this.tr("Choose theme"));
-			menuPart.add(themeButton);
-
 			this.addSpacer();
 			
-			this.__userButton = new qx.ui.toolbar.Button(this.tr("User"), "beege/images/user_22.png");
-			this.add(this.__userButton);
+			var userMenu = new qx.ui.menu.Menu();
+			var resetPasswordBtn = new qx.ui.menu.Button(this.tr("Reset Password"));
+			userMenu.add(resetPasswordBtn);
+			userMenu.addSeparator();
+			this.__settingsBtn = new qx.ui.menu.Button(this.tr("Settings"));
+			userMenu.add(this.__settingsBtn);
+			this.add(new qx.ui.toolbar.MenuButton(this.tr("User"), "beege/images/user_22.png", userMenu));
 
 			var viewPart = new qx.ui.toolbar.Part();
 			this.add(viewPart);
@@ -89,7 +64,7 @@ qx.Class.define("beege.views.Toolbar", {
 			this.__viewGroup.setAllowEmptySelection(true);
 			this.__viewGroup.add(logView, taskView);		
 			
-			var menu = new qx.ui.menu.Menu;
+			var menu = new qx.ui.menu.Menu();
 			var checkBtn = new qx.ui.menu.CheckBox(this.tr("Check"));
 			menu.add(checkBtn);
 
@@ -113,6 +88,10 @@ qx.Class.define("beege.views.Toolbar", {
 
 		getRunButton : function() {
 			return this.__runButton;
+		},
+		
+		getSettingsButton : function() {
+			return this.__settingsBtn;
 		}
 	}
 });
